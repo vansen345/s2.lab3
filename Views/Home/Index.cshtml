@@ -1,4 +1,4 @@
-﻿@model IEnumerable<s2.lab3.Models.Course>
+﻿@model s2.lab3.ViewModel.CourseViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,7 +6,7 @@
 
 <div class="row">
     <ul class="course">
-        @foreach(var course in Model)
+        @foreach(var course in Model.UpcomingCourses)
             {
                <li>
                    <div class=" date">
@@ -23,12 +23,21 @@
                    <div class="details">
                        <span class="lecturer">
                            @course.Lecturer.Name
+                           @if (Model.Showaction)
+                           {
+                               <button class="btn btn-default btn-sm js-toggle-attendance" data-user-id="@course.LecturerId">Follow</button>
+                           }
 
                        </span>
                        <span class="catergory">
                            @course.Category.Name
                        </span>
-                       <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going</button>
+                       @if (Model.Showaction)
+                       {
+                           <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going</button>
+
+                       }
+
                    </div>
                </li>
             }
@@ -48,6 +57,16 @@
                         })
                         .fail(function () {
                             alert("Something failed!");
+                        });
+                });
+                $(".js-toggle-follow").click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                        .done(function () {
+                            button.text("Following");
+                        })
+                        .fail(function () {
+                            alert("Something failed");
                         });
                 });
             });

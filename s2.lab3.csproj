@@ -178,6 +178,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Webconfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CoursesController.cs" />
     <Compile Include="Controllers\ApplicationDbContext_dbConText.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CouresController.cs" />
@@ -216,6 +217,10 @@
     <Compile Include="Migrations\202107120139239_AddFollowingsTable.cs" />
     <Compile Include="Migrations\202107120139239_AddFollowingsTable.Designer.cs">
       <DependentUpon>202107120139239_AddFollowingsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107120438585_AddIsCanceledColumnToCourse.cs" />
+    <Compile Include="Migrations\202107120438585_AddIsCanceledColumnToCourse.Designer.cs">
+      <DependentUpon>202107120438585_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -289,6 +294,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Coures\Create.cshtml" />
+    <Content Include="Views\Coures\Attending.cshtml" />
+    <Content Include="Views\Coures\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107120139239_AddFollowingsTable.resx">
       <DependentUpon>202107120139239_AddFollowingsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107120438585_AddIsCanceledColumnToCourse.resx">
+      <DependentUpon>202107120438585_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
